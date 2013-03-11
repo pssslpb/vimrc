@@ -17,7 +17,6 @@ set hlsearch
 " -- YouCompleteMe --
 let g:ycm_key_invoke_completion = '<C-w>'
 let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py'
-nmap <leader>tt :TagbarToggle<cr>
 
 " -- Syntastic --
 let g:syntastic_check_on_open=1
@@ -39,3 +38,11 @@ nmap <A-v> "+p
 set nocompatible
 set laststatus=2
 let g:Powerline_stl_path_style = 'relative'
+
+" -- Tagbar --
+nmap <leader>tt :TagbarToggle<cr>
+map <C-H> <C-W>h
+map <C-J> <C-W>j
+map <C-K> <C-W>k
+map <C-L> <C-W>l
+map <C-TAB> <C-W>w
