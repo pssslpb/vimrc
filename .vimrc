@@ -5,6 +5,9 @@ syntax enable
 syntax on
 filetype plugin indent on
 
+" -- colorscheme --
+colorscheme evening
+
 " -- tab --
 set shiftwidth=4
 set softtabstop=4
@@ -38,6 +41,7 @@ nmap <A-v> "+p
 set nocompatible
 set laststatus=2
 let g:Powerline_stl_path_style = 'relative'
+let g:Powerline_colorscheme = 'solarized256'
 
 " -- Tagbar --
 nmap <leader>tt :TagbarToggle<cr>
@@ -46,3 +50,26 @@ map <C-J> <C-W>j
 map <C-K> <C-W>k
 map <C-L> <C-W>l
 map <C-TAB> <C-W>w
+
+" -- voom --
+nmap <leader>v :VoomToggle<cr>
+let g:voom_tree_placement = "right"
+
+nmap [1 <esc>$a{{{1<esc>
+nmap [2 <esc>$a{{{2<esc>
+nmap [3 <esc>$a{{{3<esc>
+nmap [4 <esc>$a{{{4<esc>
+nmap [5 <esc>$a{{{5<esc>
+    
+imap [1 <esc>$a{{{1
+imap [2 <esc>$a{{{2
+imap [3 <esc>$a{{{3
+imap [4 <esc>$a{{{4
+imap [5 <esc>$a{{{5
+
+" -- snipMate --
+" auto load txt syntax file
+au BufRead,BufNewFile *.txt set filetype=txt
+au BufRead,BufNewFile CMakeLists.txt set filetype=cmake
+au BufRead,BufNewFile *.cmake  set filetype=cmake
+au BufRead,BufNewFile *.cm  set filetype=cmake
