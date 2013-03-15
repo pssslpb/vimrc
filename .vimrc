@@ -26,7 +26,7 @@ let g:syntastic_check_on_open=1
 
 " -- NERDTree --
 nmap <leader>tr :NERDTreeToggle<cr> 
-set autochdir
+"set autochdir
 let NERDTreeChDirMode=1
 let NERDChristmasTree=1
 let NERDTreeShowBookmarks=1
@@ -40,7 +40,7 @@ nmap <A-v> "+p
 " -- PowerLine --
 set nocompatible
 set laststatus=2
-let g:Powerline_stl_path_style = 'relative'
+"let g:Powerline_stl_path_style = 'relative'
 let g:Powerline_colorscheme = 'solarized256'
 
 " -- Tagbar --
