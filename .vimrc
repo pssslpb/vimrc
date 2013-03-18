@@ -5,6 +5,12 @@ syntax enable
 syntax on
 filetype plugin indent on
 
+" -- mapleader --
+let mapleader = ","
+
+imap <C-s> <esc>:w<cr>
+nmap <C-s> <esc>:w<cr>
+
 " -- colorscheme --
 colorscheme evening
 
