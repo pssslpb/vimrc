@@ -10,6 +10,7 @@ let mapleader = ","
 
 imap <C-s> <esc>:w<cr>
 nmap <C-s> <esc>:w<cr>
+nmap <C-esc> :q<cr>
 
 " -- colorscheme --
 colorscheme evening
