@@ -10,7 +10,7 @@ filetype plugin indent on
 
 imap <C-s> <esc>:w<cr>
 nmap <C-s> <esc>:w<cr>
-nmap <C-esc> :q<cr>
+nmap <f4> :q<cr>
 
 """""  -- colorscheme --
 colorscheme evening
@@ -96,7 +96,7 @@ let g:ctrlp_working_path_mode = 'ra'
 """""" -- cscope --
 " copy from cscope doc: cscope-suggestions
 if has("cscope")
-	set csprg=/usr/local/bin/cscope
+	set csprg=/usr/bin/cscope
 	set csto=0
 	set cst
 	set nocsverb
@@ -133,7 +133,7 @@ function Updatedb()
     endwhile
 endfunction
 
-nmap <c-f5> :call Updatedb()<cr><cr>
+nmap <c-f5> :call Updatedb()<cr>
 nmap <f5> :cs add cscope.out<cr>
 
 """"""  auto load txt syntax file
