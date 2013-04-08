@@ -111,7 +111,7 @@ if has("cscope")
 endif
 
 "make cscope result display to quickfix
-:set cscopequickfix=s-,c-,d-,i-,t-,e-
+:set cscopequickfix=s-,c-,d-,i-,t-,e-,g-
 
 " Auto update cscope database
 function Updatedb()
@@ -121,9 +121,9 @@ function Updatedb()
             exec "!ctags -R --c++-kinds=+p --fields=+ialS --extra=+q"
 
             let curdir = getcwd()
-            silent exec "!find " .curdir ." -name '*.h' -o -name '*.c' -o -name '*.cc' -o -name '*.cpp' -o -name '*.hpp' > cscope.files"
-            silent exec "!cscope -Rb -i cscope.files"
-            exec "cs add cscope.out"
+            exec "!find " .curdir ." -name '*.h' -o -name '*.c' -o -name '*.cc' -o -name '*.cpp' -o -name '*.hpp' > cscope.files"
+            exec "!cscope -b -k -q -i cscope.files"
+            exec "cs reset cscope.out"
             break
         else
             let curdir = getcwd()
@@ -135,6 +135,44 @@ endfunction
 
 nmap <c-f5> :call Updatedb()<cr>
 nmap <f5> :cs add cscope.out<cr>
+
+" 查找C语言符号，即查找函数名、宏、枚举值等出现的地方
+nmap <C-c>s :cs find s <C-R>=expand("<cword>")<CR><CR>:cw<cr>
+
+" 查找函数、宏、枚举等定义的位置
+nmap <C-c>g :cs find g <C-R>=expand("<cword>")<CR><CR>:cw<cr>
+
+" 查找调用本函数的函数
+nmap <C-c>c :cs find c <C-R>=expand("<cword>")<CR><CR>:cw<cr>
+
+" 查找指定的字符串
+nmap <C-c>t :cs find t <C-R>=expand("<cword>")<CR><CR>:cw<cr>
+
+" 查找egrep模式，相当于egrep功能，但查找速度快多了
+nmap <C-c>e :cs find e <C-R>=expand("<cword>")<CR><CR>:cw<cr>
+
+" 查找并打开文件，类似vim的find功能
+nmap <C-c>f :cs find f <C-R>=expand("<cfile>")<CR><CR>:cw<cr>
+
+" 查找包含本文件的文件
+nmap <C-c>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>:cw<cr>
+
+" 查找本函数调用的函数
+nmap <C-c>d :cs find d <C-R>=expand("<cword>")<CR><CR>:cw<cr>
+
+"""""" quickfix
+" toggle quickfix
+command -bang -nargs=? QFix call QFixToggle(<bang>0)
+function! QFixToggle(forced)
+  if exists("g:qfix_win") && a:forced == 0
+    cclose
+    unlet g:qfix_win
+  else
+    copen 10
+    let g:qfix_win = bufnr("$")
+  endif
+endfunction
+nmap <f2> :QFix<cr>
 
 """"""  auto load txt syntax file
 au BufRead,BufNewFile *.txt set filetype=txt
