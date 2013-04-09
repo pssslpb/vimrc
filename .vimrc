@@ -39,6 +39,8 @@ let NERDChristmasTree=1
 let NERDTreeShowBookmarks=1
 " move tabs to the end for new, single buffers (exclude splits)
 autocmd BufNew * if winnr('$') == 1 | tabmove99 | endif
+autocmd vimenter * NERDTree 
+autocmd VimEnter * wincmd w
 
 """""  -- copy and paste --
 vmap <A-c> "+y
@@ -173,6 +175,8 @@ function! QFixToggle(forced)
   endif
 endfunction
 nmap <f2> :QFix<cr>
+nmap <a-f2> :colder<cr>
+nmap <a-f3> :cnewer<cr>
 
 """"""  auto load txt syntax file
 au BufRead,BufNewFile *.txt set filetype=txt
