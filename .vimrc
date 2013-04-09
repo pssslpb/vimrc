@@ -39,8 +39,10 @@ let NERDChristmasTree=1
 let NERDTreeShowBookmarks=1
 " move tabs to the end for new, single buffers (exclude splits)
 autocmd BufNew * if winnr('$') == 1 | tabmove99 | endif
-autocmd vimenter * NERDTree 
-autocmd VimEnter * wincmd w
+if ! &diff && has("gui_running")
+    autocmd vimenter * NERDTree 
+    autocmd VimEnter * wincmd w
+endif
 
 """""  -- copy and paste --
 vmap <A-c> "+y
